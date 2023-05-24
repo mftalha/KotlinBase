@@ -88,11 +88,66 @@ class MainActivity : AppCompatActivity() {
         yemekKaloriMap.put("Elma",100)
         yemekKaloriMap.put("Et",300)
         yemekKaloriMap.put("Tavuk",200)
+
+        // If Control
+        println("---------If Statements----------")
+        val skor = 15;
+        if(skor < 10){
+            println("skor: 10 dan küçüktür")
+        }
+        else if(skor >= 10 && skor <20){
+            println("skor 10 ve 20 arasında")
+        }
+        else{
+            println("skor 20 den büyüktür.")
+        }
+
+        println("------When-----------")
+        var notRakami = 3
+        var notStringi = ""
+
+        when(notRakami){
+            0 -> notStringi = "Geçersiz Not"
+            1 -> notStringi = "Zayıf"
+            2 -> notStringi = "Kötü"
+            3 -> notStringi = "Orta"
+            4 -> notStringi = "İyi"
+            else -> notStringi = "Pek İyi"
+        }
+
+        // methot işlemleri
+        println(notStringi)
+
+        firstFunction()
+        cikarmaFunction(9,5);
+        println(toplama(4,8))
+
+        binding.change.setOnClickListener{ // change id'ye tıklandığında buraya gir.
+            val toplamaSonucu = toplama(10,50)
+            binding.textView2.text = "Sonuç: ${toplamaSonucu}"
+        }
     }
 
     // xml kısmında butonun onclik'ine nameChange ismini vermiştim => fonksiyonu da buraya yazıyorum
-    fun nameChange(view: View){ // view : obje ismi ;; View: obje type
+    fun nameChange(view: View){ // view : obje ismi ;; View: obje type // bunları yazma sebebimiz : xml deki id ile çağırmamız.
        // textView.text = "Hello Android"
         binding.textView.text = "Hello binding"
     }
+
+    fun firstFunction(){
+        println("first function run")
+    }
+
+    // fonksiyona girdi almak
+    fun cikarmaFunction(x: Int , y: Int){
+        println(x - y)
+        binding.textView2.text = "Sonuç: ${x-y}"
+    }
+
+    // return
+
+    fun toplama(a: Int, b: Int) : Int{
+        return a+b
+    }
+
 }
