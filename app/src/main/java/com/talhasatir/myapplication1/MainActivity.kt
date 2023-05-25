@@ -126,6 +126,8 @@ class MainActivity : AppCompatActivity() {
             val toplamaSonucu = toplama(10,50)
             binding.textView2.text = "Sonuç: ${toplamaSonucu}"
         }
+
+        sinifCalisasi()
     }
 
     // xml kısmında butonun onclik'ine nameChange ismini vermiştim => fonksiyonu da buraya yazıyorum
@@ -145,9 +147,34 @@ class MainActivity : AppCompatActivity() {
     }
 
     // return
-
     fun toplama(a: Int, b: Int) : Int{
         return a+b
+    }
+
+    fun sinifCalisasi(){
+        var name = "Talha"
+        var job = "Software"
+        var age = 24
+
+        var superman = SuperKahraman("Superman",50,"Developer")
+
+        binding.textView2.text = "Yaş: ${superman.age}"
+    }
+
+    fun nullable(){
+        //null olaak başlatyoruz int dfeğetri
+        var myAge : Int? = null // Int? => null olabilir diyoruz.
+        //println(myAge*2) //hata verir : çünkü değerin null olm a ihtimali vardır.
+        //println(myAge!!*2) //dedigimde calisacaktir : biz 2 ünlem ile bu deger garanti doludur diyoruz. => eger bos gelirse ama program patlar.
+
+        // elvis operatörü
+        var sonuc = myAge?.minus(2) ?: 10 //=> sonuc = myAge-2 (egerki myage bos degil ise) ;; sonuc = 10 // myAge bos ise
+        println(sonuc)
+
+        // let
+        myAge?.let { //egerrki myAge degeri bos degilse ilgili tag'a gir. => println icerigini yazdır.
+            println(it * 5)
+        }
     }
 
 }
